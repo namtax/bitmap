@@ -1,6 +1,8 @@
 class Image
   WHITE_PIXEL = 0
 
+  attr_reader :table
+
   def initialize(input)
     @coords = parse(input)
     @x      = @coords.first
@@ -13,7 +15,7 @@ class Image
   end
 
   private
-  attr_reader :coords, :table, :x, :y
+  attr_reader :coords, :x, :y
 
   def parse(coords)
     coords.split.map(&:to_i)

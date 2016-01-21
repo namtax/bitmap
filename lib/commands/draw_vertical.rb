@@ -7,8 +7,9 @@ module Commands
       y2    = input[2][1].to_i
       color = input[3]
 
-      image.table[-y1][x-1] = color
-      image.table[-y2][x-1] = color
+      (y1-1..y2-1).each do |row|
+        image.table[row][x-1] = color
+      end
     end
   end
 end

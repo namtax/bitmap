@@ -8,10 +8,10 @@ module Commands
         let(:coords) { '2 2' }
         let(:contents) do
           "DD\n" \
-          "00\n"
+          "OO\n"
         end
 
-        it 'colors in correct pixel' do
+        it 'colors in correct pixels' do
           subject.run(image, 'X1 X2 2 D')
           expect(image.to_s).to eq contents
         end
@@ -20,14 +20,14 @@ module Commands
       context 'large image' do
         let(:coords) { '4 4' }
         let(:contents) do
-          "0000\n" \
-          "00XX\n" \
-          "0000\n" \
-          "0000\n"
+          "OOOO\n" \
+          "XXXX\n" \
+          "OOOO\n" \
+          "OOOO\n"
         end
 
-        it 'colors in correct pixel' do
-          subject.run(image, 'X3 X4 3 X')
+        it 'colors in correct pixels' do
+          subject.run(image, 'X1 X4 3 X')
           expect(image.to_s).to eq contents
         end
       end

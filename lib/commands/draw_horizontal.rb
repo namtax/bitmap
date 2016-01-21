@@ -7,8 +7,7 @@ module Commands
       y     = input[2].to_i
       color = input[3]
 
-      image.table[-y][x1-1] = color
-      image.table[-y][x2-1] = color
+      image.table[-y].fill(color, x1-1..x2-1)
     end
   end
 end

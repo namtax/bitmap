@@ -1,15 +1,23 @@
+require 'bitmap/command'
+require 'bitmap/input_validator'
+
 module Bitmap
   class CLI
     def initialize(input)
-      @command_type = input[0]
-      @instructions = input[2..-1]
+      @input    = input
+      @command  = input.to_s[0]
+      @opts     = input.to_s[2..-1]
     end
 
     def run
-      Command.build(command_type).run(instructions)
+      if !Bitmap::InputValidator.run(input).valid?
+        puts 'Please provide a valid command'
+      else
+        Bitmap::Command.build(command).run(opts)
+      end
     end
 
     private
-    attr_reader :command_type, :instructions
+    attr_reader :input, :command, :opts
   end
 end

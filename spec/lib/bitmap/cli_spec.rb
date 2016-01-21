@@ -13,10 +13,19 @@ module Bitmap
       end
 
       context 'command without instructions' do
-        let(:input) { 'C' }
+        let(:input) { 'I' }
 
-        it 'does not pass anything to command' do
-          expect(Commands::Clear).to receive(:run).with(nil)
+        it 'notifies user' do
+          expect(subject).to receive(:puts).with('Please provide a valid command')
+          subject.run
+        end
+      end
+
+      context 'input empty' do
+        let(:input) { ' ' }
+
+        it 'notifies user' do
+          expect(subject).to receive(:puts).with('Please provide a valid command')
           subject.run
         end
       end

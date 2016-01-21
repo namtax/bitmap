@@ -7,8 +7,8 @@ module Commands
       context 'small image' do
         let(:coords)   { '2 2' }
         let(:contents) do
-          "0X\n" \
-          "00\n"
+          "OX\n" \
+          "OO\n"
         end
 
         it 'colors in correct pixel' do
@@ -20,10 +20,10 @@ module Commands
       context 'large image' do
         let(:coords) { '4 4' }
         let(:contents) do
-          "0000\n" \
-          "Y000\n" \
-          "0000\n" \
-          "0000\n"
+          "OOOO\n" \
+          "YOOO\n" \
+          "OOOO\n" \
+          "OOOO\n"
         end
 
         it 'colors in correct pixel' do

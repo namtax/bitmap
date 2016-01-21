@@ -1,5 +1,5 @@
 class Image
-  WHITE_PIXEL = 0
+  WHITE_PIXEL = 'O'
 
   attr_reader :table
 

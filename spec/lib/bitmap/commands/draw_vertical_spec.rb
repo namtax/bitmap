@@ -1,8 +1,8 @@
 module Bitmap
   module Commands
     describe DrawVertical do
-      subject     { described_class }
-      let(:image) { Image.new(coords) }
+      subject      { described_class }
+      let!(:image) { Image.create(coords) }
 
       describe '.run' do
         context 'small image' do
@@ -13,7 +13,7 @@ module Bitmap
           end
 
           it 'colors in correct pixels' do
-            subject.run(image, '2 Y1 Y2 X')
+            subject.run('2 Y1 Y2 X')
             expect(image.to_s).to eq contents
           end
         end
@@ -28,7 +28,7 @@ module Bitmap
           end
 
           it 'colors in correct pixels' do
-            subject.run(image, '2 Y1 Y4 X')
+            subject.run('2 Y1 Y4 X')
             expect(image.to_s).to eq contents
           end
         end

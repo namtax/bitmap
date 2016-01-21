@@ -1,3 +1,12 @@
+require 'bitmap/commands/create'
+require 'bitmap/commands/clear'
+require 'bitmap/commands/color'
+require 'bitmap/commands/draw_vertical'
+require 'bitmap/commands/draw_horizontal'
+require 'bitmap/commands/fill'
+require 'bitmap/commands/show'
+require 'bitmap/commands/terminate'
+
 module Bitmap
   class Command
     COMMAND_MAP =
@@ -13,7 +22,11 @@ module Bitmap
       }
 
     def self.build(input)
-      COMMAND_MAP[input[0].downcase.to_sym]
+      COMMAND_MAP[input[0].downcase.to_sym] || invalid_type
+    end
+
+    def self.invalid_type
+      puts 'Please supply a valid command'
     end
   end
 end

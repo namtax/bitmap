@@ -1,8 +1,8 @@
 module Bitmap
   module Commands
     describe Color do
-      subject     { described_class }
-      let(:image) { Image.new(coords) }
+      subject      { described_class }
+      let!(:image) { Image.create(coords) }
 
       describe '#run' do
         context 'small image' do
@@ -13,7 +13,7 @@ module Bitmap
           end
 
           it 'colors in correct pixel' do
-            subject.run(image, '2 2 X')
+            subject.run('2 2 X')
             expect(image.to_s).to eq contents
           end
         end
@@ -28,7 +28,7 @@ module Bitmap
           end
 
           it 'colors in correct pixel' do
-            subject.run(image, '1 3 Y')
+            subject.run('1 3 Y')
             expect(image.to_s).to eq contents
           end
         end

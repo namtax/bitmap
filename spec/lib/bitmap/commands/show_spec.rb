@@ -1,8 +1,8 @@
 module Bitmap
   module Commands
     describe Show do
-      subject     { described_class }
-      let(:image) { Image.new('2 2') }
+      subject      { described_class }
+      let!(:image) { Image.create('2 2') }
 
       describe '.run' do
         it 'shows image contents' do

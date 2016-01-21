@@ -2,7 +2,7 @@ module Bitmap
   module Commands
     class Show
       def self.run(image)
-        image.to_s
+        puts Image.first.to_s
       end
     end
   end

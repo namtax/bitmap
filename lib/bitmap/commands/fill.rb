@@ -1,7 +1,8 @@
 module Bitmap
   module Commands
     class Fill
-      def self.run(image, input)
+      def self.run(input)
+        image     = Image.first
         input     = input.split
         x         = input[0].to_i
         y         = input[1].to_i

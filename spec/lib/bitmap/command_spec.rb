@@ -1,38 +1,55 @@
 module Bitmap
   describe Command do
-    subject { described_class }
+    subject      { described_class }
+    let(:result) { subject.build(type) }
 
     describe '.build' do
       context 'create' do
-        it { expect(subject.build('I 2 2')).to eq Commands::Create }
+        let(:type) { 'I '}
+        it { expect(result).to eq Commands::Create }
       end
 
       context 'clear' do
-        it { expect(subject.build('C')).to eq Commands::Clear }
+        let(:type) { 'C' }
+        it { expect(result).to eq Commands::Clear }
       end
 
       context 'color' do
-        it { expect(subject.build('L 1 2 C')).to eq Commands::Color }
+        let(:type) { 'L' }
+        it { expect(result).to eq Commands::Color }
       end
 
       context 'vertical' do
-        it { expect(subject.build('V 2 Y1 Y4 C')).to eq Commands::DrawVertical }
+        let(:type) { 'V' }
+        it { expect(result).to eq Commands::DrawVertical }
       end
 
       context 'horizontal' do
-        it { expect(subject.build('H X1 X4 2 C')).to eq Commands::DrawHorizontal }
+        let(:type) { 'H' }
+        it { expect(result).to eq Commands::DrawHorizontal }
       end
 
       context 'fill' do
-        it { expect(subject.build('F 1 2 C')).to eq Commands::Fill }
+        let(:type) { 'F' }
+        it { expect(result).to eq Commands::Fill }
       end
 
       context 'show' do
-        it { expect(subject.build('S')).to eq Commands::Show }
+        let(:type) { 'S' }
+        it { expect(result).to eq Commands::Show }
       end
 
       context 'terminate' do
-        it { expect(subject.build('X')).to eq Commands::Terminate }
+        let(:type) { 'X' }
+        it { expect(result).to eq Commands::Terminate }
+      end
+
+      context 'incorrect command type' do
+        let(:type) { 'B' }
+        it do
+          expect(subject).to receive(:puts).with('Please supply a valid command')
+          subject.build(type)
+        end
       end
     end
   end

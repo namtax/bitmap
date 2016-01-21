@@ -1,8 +1,8 @@
 module Bitmap
   module Commands
     describe Clear do
-      subject     { described_class }
-      let(:image) { Image.new(coords) }
+      subject      { described_class }
+      let!(:image) { Image.create(coords) }
 
       describe '#run' do
         context 'small image' do
@@ -12,7 +12,7 @@ module Bitmap
             "OO\n"
           end
 
-          before { Fill.run(image, '1 1 B') }
+          before { Fill.run('1 1 B') }
 
           it 'resets all pixels to white' do
             subject.run(image)
@@ -29,7 +29,7 @@ module Bitmap
             "OOOO\n"
           end
 
-          before { Fill.run(image, '1 1 B') }
+          before { Fill.run('1 1 B') }
 
           it 'resets all pixels to white' do
             subject.run(image)

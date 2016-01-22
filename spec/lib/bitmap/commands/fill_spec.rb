@@ -25,6 +25,10 @@ module Bitmap
         end
       end
 
+      context 'recurcive function meets non existing y axis' do
+        it { expect{ subject.run('4 4 X') }.to_not raise_error }
+      end
+
       context 'x coord out of bounds' do
         it 'notifies user' do
           expect(subject).to receive(:puts).with('Input out of bounds')

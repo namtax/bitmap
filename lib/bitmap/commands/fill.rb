@@ -17,14 +17,17 @@ module Bitmap
       end
 
       def self.color_pixel(image, x, y, color, new_color)
-        return if (image.table[y][x] != color || image.table[y][x] == new_color )
+        return if invalid_pixel?(image.table, x, y, color, new_color)
 
         image.table[y][x] = new_color
 
-        color_pixel(image, x + 1, y, color, new_color)
-        color_pixel(image, x - 1, y, color, new_color)
-        color_pixel(image, x, y + 1, color, new_color)
-        color_pixel(image, x, y - 1, color, new_color)
+        [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]].each do |c|
+          color_pixel(image, *c, color, new_color)
+        end
+      end
+
+      def self.invalid_pixel?(table, x, y, color, new_color)
+        table[y].nil? || table[y][x].nil? || table[y][x] != color || table[y][x] == new_color
       end
     end
   end

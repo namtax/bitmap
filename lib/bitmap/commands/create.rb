@@ -1,5 +1,3 @@
-require 'bitmap/image'
-
 module Bitmap
   module Commands
     class Create

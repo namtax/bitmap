@@ -1,6 +1,3 @@
-require 'bitmap/command'
-require 'bitmap/input_validator'
-
 module Bitmap
   class CLI
     def initialize(i)

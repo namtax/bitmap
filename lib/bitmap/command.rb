@@ -1,13 +1,3 @@
-require 'bitmap/commands/create'
-require 'bitmap/commands/clear'
-require 'bitmap/commands/color'
-require 'bitmap/commands/draw_vertical'
-require 'bitmap/commands/draw_horizontal'
-require 'bitmap/commands/fill'
-require 'bitmap/commands/show'
-require 'bitmap/commands/terminate'
-require 'bitmap/commands/manual'
-
 module Bitmap
   class Command
     COMMAND_MAP =

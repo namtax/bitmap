@@ -1,6 +1,3 @@
-require 'bitmap/cli'
-require 'bitmap/params'
-
 module Bitmap
   class Session
     WELCOME = 'Hello...you look great today.'

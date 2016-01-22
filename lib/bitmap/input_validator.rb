@@ -1,5 +1,3 @@
-require 'bitmap/input_validator_response'
-
 module Bitmap
   class InputValidator
     CONDITIONS = {

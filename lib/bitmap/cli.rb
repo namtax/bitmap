@@ -3,21 +3,31 @@ require 'bitmap/input_validator'
 
 module Bitmap
   class CLI
-    def initialize(input)
-      @input    = input
-      @command  = input.to_s[0]
-      @opts     = input.to_s[2..-1]
+    def initialize(i)
+      @input          = i.strip
+      @input_command  = input.to_s[0]
+      @opts           = input.to_s[2..-1]
     end
 
     def run
-      if !Bitmap::InputValidator.run(input).valid?
+      if !InputValidator.run(input).valid?
         puts 'Please provide a valid command'
+      elsif !creating_image? && Image.first.nil?
+        puts 'Image does not exist'
       else
-        Bitmap::Command.build(command).run(opts)
+        command.run(opts)
       end
     end
 
     private
-    attr_reader :input, :command, :opts
+    attr_reader :input, :input_command, :command, :opts
+
+    def creating_image?
+      command == Commands::Create
+    end
+
+    def command
+      @command ||= Command.build(input_command)
+    end
   end
 end

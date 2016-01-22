@@ -7,9 +7,13 @@ module Bitmap
         x         = input[0].to_i
         y         = input[1].to_i
         new_color = input[2]
-        color     = image.table[-y][x-1]
 
-        color_pixel(image, x-1, -y, color, new_color)
+        if image.out_of_bounds?(x, y)
+          puts 'Input out of bounds'
+        else
+          color = image.table[-y][x-1]
+          color_pixel(image, x-1, -y, color, new_color)
+        end
       end
 
       def self.color_pixel(image, x, y, color, new_color)

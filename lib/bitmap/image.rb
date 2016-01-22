@@ -10,7 +10,7 @@ module Bitmap
       @first
     end
 
-    attr_reader :table
+    attr_reader :table, :x, :y
 
     def initialize(input)
       coords    = parse(input)
@@ -19,12 +19,15 @@ module Bitmap
       @table    = create_table
     end
 
+    def out_of_bounds?(input_x, input_y)
+      (input_x > x || input_x < 1 || input_y > y || input_y < 1)
+    end
+
     def to_s
       table.map{ |x| x.join + "\n" }.join
     end
 
     private
-    attr_reader :x, :y
 
     def parse(coords)
       coords.split.map(&:to_i)

@@ -32,6 +32,33 @@ module Bitmap
             expect(image.to_s).to eq contents
           end
         end
+
+        context 'first x coord out of bounds' do
+          let(:coords) { '4 4' }
+
+          it 'notifies user' do
+            expect(subject).to receive(:puts).with('Input out of bounds')
+            subject.run('X5 X4 3 X')
+          end
+        end
+
+        context 'last x coord out of bounds' do
+          let(:coords) { '4 4' }
+
+          it 'notifies user' do
+            expect(subject).to receive(:puts).with('Input out of bounds')
+            subject.run('X1 X5 3 X')
+          end
+        end
+
+        context 'y coord out of bounds' do
+          let(:coords) { '4 4' }
+
+          it 'notifies user' do
+            expect(subject).to receive(:puts).with('Input out of bounds')
+            subject.run('X1 X5 0 X')
+          end
+        end
       end
     end
   end

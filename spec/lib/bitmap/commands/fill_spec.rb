@@ -3,9 +3,9 @@ module Bitmap
     describe Fill do
       subject      { described_class }
       let!(:image) { Image.create(coords) }
+      let(:coords) { '4 4' }
 
       describe '#run' do
-        let(:coords) { '4 4' }
         let(:contents) do
           "OOOO\n" \
           "OOOO\n" \
@@ -22,6 +22,20 @@ module Bitmap
         it 'fills in pixel and any other pixel with same colour that shares a common side' do
           subject.run('1 1 B')
           expect(image.to_s).to eq contents
+        end
+      end
+
+      context 'x coord out of bounds' do
+        it 'notifies user' do
+          expect(subject).to receive(:puts).with('Input out of bounds')
+          subject.run('5 1 B')
+        end
+      end
+
+      context 'last y coord out of bounds' do
+        it 'notifies user' do
+          expect(subject).to receive(:puts).with('Input out of bounds')
+          subject.run('1 5 B')
         end
       end
     end

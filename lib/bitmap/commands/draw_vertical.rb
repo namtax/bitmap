@@ -9,9 +9,10 @@ module Bitmap
         y2    = input[2][1].to_i
         color = input[3]
 
-
-        (y1-1..y2-1).each do |row|
-          image.table[row][x-1] = color
+        if image.out_of_bounds?(x, y1) || image.out_of_bounds?(x, y2)
+          puts 'Input out of bounds'
+        else
+          (y1-1..y2-1).each { |row| image.table[row][x-1] = color }
         end
       end
     end

@@ -1,4 +1,5 @@
 require 'bitmap/cli'
+require 'bitmap/params'
 
 module Bitmap
   class Session

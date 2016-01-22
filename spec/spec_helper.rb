@@ -1,4 +1,5 @@
 require 'pry'
+require 'bitmap/session'
 require 'bitmap/image'
 require 'bitmap/params'
 require 'bitmap/cli'

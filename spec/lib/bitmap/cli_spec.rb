@@ -57,6 +57,15 @@ module Bitmap
             subject.run
           end
         end
+
+        context 'user requests assistance' do
+          let(:input) { 'man' }
+
+          it 'displays helpful info to user' do
+            expect(Commands::Manual).to receive(:run)
+            subject.run
+          end
+        end
       end
     end
   end

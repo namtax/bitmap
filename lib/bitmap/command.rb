@@ -6,6 +6,7 @@ require 'bitmap/commands/draw_horizontal'
 require 'bitmap/commands/fill'
 require 'bitmap/commands/show'
 require 'bitmap/commands/terminate'
+require 'bitmap/commands/manual'
 
 module Bitmap
   class Command
@@ -18,11 +19,16 @@ module Bitmap
         h: Bitmap::Commands::DrawHorizontal,
         f: Bitmap::Commands::Fill,
         s: Bitmap::Commands::Show,
-        x: Bitmap::Commands::Terminate
+        x: Bitmap::Commands::Terminate,
+        m: Bitmap::Commands::Manual
       }
 
     def self.build(input)
-      COMMAND_MAP[input[0].downcase.to_sym] || invalid_type
+      COMMAND_MAP[sanitize(input)] || invalid_type
+    end
+
+    def self.sanitize(input)
+      input[0].downcase.to_sym
     end
 
     def self.invalid_type

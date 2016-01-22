@@ -10,7 +10,8 @@ module Bitmap
       horizontal: /^H \d+ \d+ \d+ \w$/,
       fill: /^F \d+ \d+ \w$/,
       show: /^S$/,
-      terminate: /^X$/
+      terminate: /^X$/,
+      help: /^man$/
     }
 
     def self.run(input)

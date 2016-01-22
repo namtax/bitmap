@@ -23,7 +23,7 @@ module Bitmap
     attr_reader :input, :input_command, :command, :opts
 
     def processing_image?
-      command != Commands::Create && command != Commands::Terminate
+      ![Commands::Create, Commands::Terminate, Commands::Manual].include?(command)
     end
 
     def command

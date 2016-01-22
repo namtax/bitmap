@@ -44,6 +44,11 @@ module Bitmap
         it { expect(result).to eq Commands::Terminate }
       end
 
+      context 'manual' do
+        let(:type) { 'man' }
+        it { expect(result).to eq Commands::Manual }
+      end
+
       context 'incorrect command type' do
         let(:type) { 'B' }
         it do

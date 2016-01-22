@@ -96,6 +96,16 @@ module Bitmap
       end
     end
 
+    context 'manual' do
+      context 'valid input' do
+        it { expect(subject.run('man')).to be_valid }
+      end
+
+      context 'invalid input' do
+        it { expect(subject.run('man down')).to_not be_valid }
+      end
+    end
+
     context 'input missing' do
       it { expect(subject.run(' ')).to_not be_valid }
     end

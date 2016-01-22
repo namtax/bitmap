@@ -40,11 +40,22 @@ module Bitmap
       end
 
       context 'image doesnt exist' do
-        let(:input) { 'C' }
+        context 'user tries to process image' do
+          let(:input) { 'C' }
 
-        it 'notifies user' do
-          expect(subject).to receive(:puts).with('Image does not exist')
-          subject.run
+          it 'notifies user' do
+            expect(subject).to receive(:puts).with('Image does not exist')
+            subject.run
+          end
+        end
+
+        context 'user terminates session' do
+          let(:input) { 'X' }
+
+          it 'terminates session' do
+            expect(Commands::Terminate).to receive(:run)
+            subject.run
+          end
         end
       end
     end

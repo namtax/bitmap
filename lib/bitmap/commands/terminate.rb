@@ -1,8 +1,11 @@
 module Bitmap
   module Commands
     class Terminate
-      def self.run(image)
+      GOODBYE = 'Bye. Its been emotional.'
 
+      def self.run(image)
+        puts GOODBYE
+        Session.end
       end
     end
   end

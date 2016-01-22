@@ -12,7 +12,7 @@ module Bitmap
     def run
       if !InputValidator.run(input).valid?
         puts 'Please provide a valid command'
-      elsif !creating_image? && Image.first.nil?
+      elsif Image.first.nil? && processing_image?
         puts 'Image does not exist'
       else
         command.run(opts)
@@ -22,8 +22,8 @@ module Bitmap
     private
     attr_reader :input, :input_command, :command, :opts
 
-    def creating_image?
-      command == Commands::Create
+    def processing_image?
+      command != Commands::Create && command != Commands::Terminate
     end
 
     def command

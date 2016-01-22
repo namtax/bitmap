@@ -4,8 +4,8 @@ module Bitmap
       def self.run(input)
         image = Image.first
         input = input.split
-        x1    = input[0][1].to_i
-        x2    = input[1][1].to_i
+        x1    = input[0].to_i
+        x2    = input[1].to_i
         y     = input[2].to_i
         color = input[3]
 

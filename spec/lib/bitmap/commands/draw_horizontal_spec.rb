@@ -13,7 +13,7 @@ module Bitmap
           end
 
           it 'colors in correct pixels' do
-            subject.run('X1 X2 2 D')
+            subject.run('1 2 2 D')
             expect(image.to_s).to eq contents
           end
         end
@@ -28,7 +28,7 @@ module Bitmap
           end
 
           it 'colors in correct pixels' do
-            subject.run('X1 X4 3 X')
+            subject.run('1 4 3 X')
             expect(image.to_s).to eq contents
           end
         end
@@ -38,7 +38,7 @@ module Bitmap
 
           it 'notifies user' do
             expect(subject).to receive(:puts).with('Input out of bounds')
-            subject.run('X5 X4 3 X')
+            subject.run('5 4 3 X')
           end
         end
 
@@ -47,7 +47,7 @@ module Bitmap
 
           it 'notifies user' do
             expect(subject).to receive(:puts).with('Input out of bounds')
-            subject.run('X1 X5 3 X')
+            subject.run('1 5 3 X')
           end
         end
 
@@ -56,7 +56,7 @@ module Bitmap
 
           it 'notifies user' do
             expect(subject).to receive(:puts).with('Input out of bounds')
-            subject.run('X1 X5 0 X')
+            subject.run('1 5 0 X')
           end
         end
       end

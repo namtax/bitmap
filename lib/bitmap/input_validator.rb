@@ -6,8 +6,8 @@ module Bitmap
       create: /^I \d+ \d+$/,
       clear: /^C$/,
       color: /^L \d+ \d+ \w$/,
-      vertical: /^V \d+ Y\d+ Y\d+ \w$/,
-      horizontal: /^H X\d+ X\d+ \d+ \w$/,
+      vertical: /^V \d+ \d+ \d+ \w$/,
+      horizontal: /^H \d+ \d+ \d+ \w$/,
       fill: /^F \d+ \d+ \w$/,
       show: /^S$/,
       terminate: /^X$/

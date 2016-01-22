@@ -5,8 +5,8 @@ module Bitmap
         image = Image.first
         input = input.split
         x     = input[0].to_i
-        y1    = input[1][1].to_i
-        y2    = input[2][1].to_i
+        y1    = input[1].to_i
+        y2    = input[2].to_i
         color = input[3]
 
         if image.out_of_bounds?(x, y1) || image.out_of_bounds?(x, y2)

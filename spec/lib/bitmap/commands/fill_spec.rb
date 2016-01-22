@@ -14,8 +14,8 @@ module Bitmap
         end
 
         before do
-          DrawHorizontal.run('X1 X2 1 X')
-          DrawHorizontal.run('X2 X4 2 X')
+          DrawHorizontal.run('1 2 1 X')
+          DrawHorizontal.run('2 4 2 X')
           Color.run('4 1 X')
         end
 

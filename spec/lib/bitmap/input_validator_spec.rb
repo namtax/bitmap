@@ -39,27 +39,27 @@ module Bitmap
 
     context 'draw vertical' do
       context 'valid input' do
-        it { expect(subject.run('V 2 Y1 Y4 C')).to be_valid }
-        it { expect(subject.run('V 2 Y1 Y4 X')).to be_valid }
-        it { expect(subject.run('V 2 Y11 Y44 X')).to be_valid }
+        it { expect(subject.run('V 2 1 4 C')).to be_valid }
+        it { expect(subject.run('V 2 1 4 X')).to be_valid }
+        it { expect(subject.run('V 2 11 44 X')).to be_valid }
       end
 
       context 'invalid input' do
-        it { expect(subject.run('V X Y1 Y4 C')).to_not be_valid }
-        it { expect(subject.run('V X Y1 Y4 c')).to_not be_valid }
+        it { expect(subject.run('V X 1 4 C')).to_not be_valid }
+        it { expect(subject.run('V X 1 4 c')).to_not be_valid }
       end
     end
 
     context 'draw horizontal' do
       context 'valid input' do
-        it { expect(subject.run('H X1 X4 2 C')).to be_valid }
-        it { expect(subject.run('H X1 X4 2 X')).to be_valid }
-        it { expect(subject.run('H X20 X24 20 X')).to be_valid }
+        it { expect(subject.run('H 1 4 2 C')).to be_valid }
+        it { expect(subject.run('H 1 4 2 X')).to be_valid }
+        it { expect(subject.run('H 20 24 20 X')).to be_valid }
       end
 
       context 'invalid input' do
-        it { expect(subject.run('H XX X4 2 C')).to_not be_valid }
-        it { expect(subject.run('H XX X4 2 c')).to_not be_valid }
+        it { expect(subject.run('H X X 2 C')).to_not be_valid }
+        it { expect(subject.run('H X X 2 c')).to_not be_valid }
       end
     end
 

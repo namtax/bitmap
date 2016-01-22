@@ -5,6 +5,7 @@ module Bitmap
     context 'create' do
       context 'valid input' do
         it { expect(subject.run('I 2 2')).to be_valid }
+        it { expect(subject.run('I 20 20')).to be_valid }
       end
 
       context 'invalid input' do
@@ -27,10 +28,12 @@ module Bitmap
       context 'valid input' do
         it { expect(subject.run('L 1 2 C')).to be_valid }
         it { expect(subject.run('L 1 2 X')).to be_valid }
+        it { expect(subject.run('L 20 20 X')).to be_valid }
       end
 
       context 'invalid input' do
         it { expect(subject.run('L 1 C')).to_not be_valid }
+        it { expect(subject.run('L 1 c')).to_not be_valid }
       end
     end
 
@@ -38,10 +41,12 @@ module Bitmap
       context 'valid input' do
         it { expect(subject.run('V 2 Y1 Y4 C')).to be_valid }
         it { expect(subject.run('V 2 Y1 Y4 X')).to be_valid }
+        it { expect(subject.run('V 2 Y11 Y44 X')).to be_valid }
       end
 
       context 'invalid input' do
         it { expect(subject.run('V X Y1 Y4 C')).to_not be_valid }
+        it { expect(subject.run('V X Y1 Y4 c')).to_not be_valid }
       end
     end
 
@@ -49,10 +54,12 @@ module Bitmap
       context 'valid input' do
         it { expect(subject.run('H X1 X4 2 C')).to be_valid }
         it { expect(subject.run('H X1 X4 2 X')).to be_valid }
+        it { expect(subject.run('H X20 X24 20 X')).to be_valid }
       end
 
       context 'invalid input' do
         it { expect(subject.run('H XX X4 2 C')).to_not be_valid }
+        it { expect(subject.run('H XX X4 2 c')).to_not be_valid }
       end
     end
 
@@ -60,10 +67,12 @@ module Bitmap
       context 'valid input' do
         it { expect(subject.run('F 1 2 C')).to be_valid }
         it { expect(subject.run('F 1 2 X')).to be_valid }
+        it { expect(subject.run('F 11 22 X')).to be_valid }
       end
 
       context 'invalid input' do
         it { expect(subject.run('F 1 C')).to_not be_valid }
+        it { expect(subject.run('F 1 c')).to_not be_valid }
       end
     end
 
@@ -88,9 +97,7 @@ module Bitmap
     end
 
     context 'input missing' do
-      it do
-        expect(subject.run(' ')).to_not be_valid
-      end
+      it { expect(subject.run(' ')).to_not be_valid }
     end
   end
 end

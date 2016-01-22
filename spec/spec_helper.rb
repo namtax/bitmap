@@ -1,5 +1,6 @@
 require 'pry'
 require 'bitmap/image'
+require 'bitmap/params'
 require 'bitmap/cli'
 require 'bitmap/input_validator'
 require 'bitmap/input_validator_response'

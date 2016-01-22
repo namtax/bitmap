@@ -20,7 +20,7 @@ module Bitmap
     end
 
     def out_of_bounds?(input_x, input_y)
-      (input_x > x || input_x < 1 || input_y > y || input_y < 1)
+      !((1..x).include?(input_x) && (1..y).include?(input_y))
     end
 
     def to_s

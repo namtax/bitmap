@@ -2,13 +2,10 @@ module Bitmap
   module Commands
     class Color
       def self.run(input)
-        image  = Image.first
-        input  = input.split
-        x      = input[0].to_i
-        y      = input[1].to_i
-        color  = input[2]
+        image       = Image.first
+        x, y, color = Params.new(input).to_a
 
-        if (x > image.x || x < 1 || y > image.y || y < 1)
+        if image.out_of_bounds?(x, y)
           puts 'Input out of bounds'
         else
           Image.first.table[-y][x-1] = color

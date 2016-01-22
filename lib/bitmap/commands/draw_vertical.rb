@@ -3,11 +3,7 @@ module Bitmap
     class DrawVertical
       def self.run(input)
         image = Image.first
-        input = input.split
-        x     = input[0].to_i
-        y1    = input[1].to_i
-        y2    = input[2].to_i
-        color = input[3]
+        x, y1, y2, color = Params.new(input).to_a
 
         if image.out_of_bounds?(x, y1) || image.out_of_bounds?(x, y2)
           puts 'Input out of bounds'

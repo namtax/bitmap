@@ -3,11 +3,7 @@ module Bitmap
     class DrawHorizontal
       def self.run(input)
         image = Image.first
-        input = input.split
-        x1    = input[0].to_i
-        x2    = input[1].to_i
-        y     = input[2].to_i
-        color = input[3]
+        x1, x2, y, color = Params.new(input).to_a
 
         if image.out_of_bounds?(x1, y) || image.out_of_bounds?(x2, y)
           puts 'Input out of bounds'
